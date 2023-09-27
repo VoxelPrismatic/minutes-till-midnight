@@ -13,7 +13,7 @@ function get() {
     midnight.setMinutes(59);
     midnight.setSeconds(59);
 
-    var diff = (midnight - d) / 1000;
+    var diff = Math.floor((midnight - d) / 1000);
     var minutes_left = Math.floor(diff / 60);
     var seconds_left = diff % 60;
     
