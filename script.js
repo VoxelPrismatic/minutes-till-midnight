@@ -77,6 +77,8 @@ function toggleTheme() {
 }
 
 color(localStorage.getItem("current_color") || "#00ffff");
+if(localStorage.getItem("light_theme"))
+    toggleTheme();
 
 function customSchedule(text) {
     var dic = {}
