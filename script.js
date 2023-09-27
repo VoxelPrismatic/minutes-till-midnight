@@ -4,7 +4,7 @@ function $(a, e = document) {
     return e.querySelectorAll(a);
 }
 $("#time").textContent = "-~-"
-        
+light_theme = false        
 
 function get() {
     var d = new Date();
@@ -13,10 +13,11 @@ function get() {
     midnight.setMinutes(59);
     midnight.setSeconds(59);
 
-    var minutes_left = Math.floor((midnight - d) / 60);
-    var seconds_left = (midnight - d) % 60;
+    var diff = (midnight - d) / 1000;
+    var minutes_left = Math.floor(diff / 60);
+    var seconds_left = diff % 60;
     
-    $("#time").textContent = minutes_left + ":" + seconds_left;
+    $("#time").textContent = zf(minutes_left) + ":" + zf(seconds_left);
 }
 
 get_timeout = 0;
