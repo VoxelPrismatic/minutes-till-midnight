@@ -23,11 +23,11 @@ function get() {
 get_timeout = 0;
 
 function toTheSecond() {
+    get();
     if(Date() == date)
         return window.setTimeout(toTheSecond, 10);
     get_timeout = window.setInterval(get, 1000);
     console.log(get_timeout);
-    get();
 }
 
 var date = Date();
