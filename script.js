@@ -77,7 +77,7 @@ function toggleTheme() {
 }
 
 color(localStorage.getItem("current_color") || "#00ffff");
-if(localStorage.getItem("light_theme"))
+if(localStorage.getItem("light_theme") == "1")
     toggleTheme();
 
 function customSchedule(text) {
