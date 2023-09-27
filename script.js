@@ -166,6 +166,6 @@ window.onkeydown = (evt) => {
     switch(evt.key.toLowerCase()) {
         case "c":
             $("#colorswap").click();
-            break;=
+            break;
     }
 }
