@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="preload" type="text/javascript" href="/prizm.dev/aeshs.sp/script.js"/>
+        <title>PRIZM.SPACE</title>
+        <style>
+            .tC {text-align: center;}
+            .tL {text-align: left;}
+            .tR {text-align: center;}
+            .inv {display: none;}
+            .mustinv {display: none !important;}
+            tr {margin: 0px;}
+            th {background-color: #00ffff88;}
+            body {font-family: "Ubuntu Mono", monospace;}
+            .cc {left: 0; right: 0; margin: auto;}
+            .fs { text-shadow: 0px 0px 10vw !important; font-weight: 800; }
+            body {width: 90vw; left: 0; right: 0; margin: auto;}
+            .bottom {position: fixed; bottom: 5px; left: 0px; right: 0px;}
+            details:not([open]) {position: fixed; width: 90%; bottom: 25px;}
+            details.drawer_bottom[open] {position: fixed; width: 90%; bottom: 25px;}
+            #colorswap {
+                background-color: #223333ff;
+                width: 16vw; color: inherit;
+                border: 2px solid #88888888;
+                height: 24px; width: 200px;
+                border-radius: 5px;
+                margin: 10px;
+            } td, th {
+                border: 2px solid #88888888;
+                padding: 5px; margin: 0px;
+            } #customizer {
+                color: inherit;
+                font-family: "Ubuntu Mono";
+                border: none;
+                padding: 5px;
+            } input, span[onclick] {
+                cursor: pointer;
+            } .reader-only {
+                opacity: 0;
+                height: 0px;
+                margin: 0px;
+                padding: 0px;
+                overflow: hidden;
+            } .selected {
+                font-weight: bold;
+                font-style: italic;
+                text-shadow: 0px 0px 1vw;
+            } .glow {
+                text-shadow: 0px 0px 1vw;
+            } s {
+                opacity: 0.5;
+            } .fullscreen {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            } #prt2 {
+                font-size: 1vw;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 10px;
+            } .disabled {
+                cursor: not-allowed !important;
+                text-decoration: line-through;
+                opacity: 50%;
+            } select, button, textarea {
+                appearance: none;
+                padding: 4px;
+                border-radius: 4px;
+                border: none;
+                font-size: inherit;
+                position: relative;
+            } #sel_block::after {
+                content: "V";
+                position: absolute;
+                top: 25%;
+                right: 5px;
+                font-size: x-small;
+            } #sel_block {
+                position: relative;
+                display: inline-block;
+            } button, select, #prt2, #drawer, option, optgroup {
+                font-family: "Ubuntu", sans-serif;
+            } #sel_block select {
+                padding-right: 20px;
+            } button, select {
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body style="color: #00ffffff; background-color: #112222ff;">
+        <div id="block">
+            <h1 class="reader-only">DO NOT USE READER MODE</h1>
+            <h2 class="reader-only">
+                Reader mode does not update and shows nonsense that you will not understand.
+            </h2>
+            <div id="main" style="width: 80%; margin: auto;">
+                <div id="space" style="height:0px"></div>
+                <div id="time" class="tC" style="font-size: 18vw; text-shadow: 0px 0px 2vw;">~</div>
+            </div>
+            <!-- BUTTONS -->
+            <div class="tC">
+                <details id="drawer" open="" onclick="drawerThing(event, this)">
+                    <summary></summary>
+                    <button onclick="toggleTheme()" style="background-color: #ccddddff; color: #122;" id="change">Light</button>
+                    <input id="colorswap" type="color" value="#00ffff" onchange="color(this.value)">
+                </details>
+            </div>
+        </div>
+        <hr style="opacity: 0; height: 5px">
+        <!-- SCRIPTS -->
+        <script src="script.js" type="text/javascript"></script>
+        <style type="text/css">
+            @font-face {
+                font-family: "Ubuntu Mono";
+                font-style: italic;
+                font-weight: 400;
+                font-display: swap;
+                src: local("Ubuntu Mono Italic"), local("UbuntuMono-Italic"), local("UbuntuMono-RI"), url("/aeshs.sp/font/UbuntuMono-RI.ttf");
+            } @font-face {
+                font-family: "Ubuntu Mono";
+                font-style: italic;
+                font-weight: 700;
+                font-display: swap;
+                src: local("Ubuntu Mono Bold Italic"), local("UbuntuMono-BoldItalic"), local("UbuntuMono-BI"), url("/aeshs.sp/font/UbuntuMono-BI.ttf");
+            } @font-face {
+                font-family: "Ubuntu Mono";
+                font-style: normal;
+                font-weight: 400;
+                font-display: swap;
+                src: local("Ubuntu Mono"), local("UbuntuMono"), local("UbuntuMono-R"), url("/aeshs.sp/font/UbuntuMono-R.ttf");
+            } @font-face {
+                font-family: "Ubuntu Mono";
+                font-style: normal;
+                font-weight: 700;
+                font-display: swap;
+                src: local("Ubuntu Mono Bold"), local("UbuntuMono-Bold"), local("UbuntuMono-B"), url("/aeshs.sp/font/UbuntuMono-B.ttf");
+            } @font-face {
+                font-family: "Ubuntu";
+                font-style: italic;
+                font-weight: 400;
+                font-display: swap;
+                src: local("Ubuntu Italic"), local("Ubuntu-Italic"), local("Ubuntu-RI"), url("/aeshs.sp/font/Ubuntu-RI.ttf");
+            } @font-face {
+                font-family: "Ubuntu";
+                font-style: italic;
+                font-weight: 700;
+                font-display: swap;
+                src: local("Ubuntu Bold Italic"), local("Ubuntu-BoldItalic"), local("Ubuntu-BI"), url("/aeshs.sp/font/Ubuntu-BI.ttf");
+            } @font-face {
+                font-family: "Ubuntu";
+                font-style: normal;
+                font-weight: 400;
+                font-display: swap;
+                src: local("Ubuntu"), local("Ubuntu"), local("Ubuntu-R"), url("/aeshs.sp/font/Ubuntu-R.ttf");
+            } @font-face {
+                font-family: "Ubuntu";
+                font-style: normal;
+                font-weight: 700;
+                font-display: swap;
+                src: local("Ubuntu Bold"), local("Ubuntu-Bold"), local("Ubuntu-B"), url("/aeshs.sp/font/Ubuntu-B.ttf");
+            }
+        </style>
+    </body>
+</html>
